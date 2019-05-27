@@ -8,4 +8,4 @@ export default interface User
     city?: string;
     state? : string;
     gender? : Gender;
-}
+} 
