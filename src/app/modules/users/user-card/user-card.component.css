@@ -1,3 +1,4 @@
-mat-card {
-    background: lightblue;
+.mat-card
+{
+    width: 18rem;
 }

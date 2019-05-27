@@ -1,26 +1,5 @@
-<mat-grid-list cols="4" gutterSize="15">
-    <mat-grid-tile>
-        <app-user-card  [user]='{id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 }'></app-user-card>
+<mat-grid-list cols="4" rowHeight="14rem" gutterSize="10">
+    <mat-grid-tile *ngFor="let item of users">
+        <app-user-card  [user]="item"></app-user-card>
     </mat-grid-tile>
-    <mat-grid-tile>
-        <app-user-card [user]='{id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 }'></app-user-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <app-user-card [user]='{id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 }'></app-user-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <app-user-card [user]='{id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 }'></app-user-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-            <app-user-card [user]='{id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 }'></app-user-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <app-user-card [user]='{id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 }'></app-user-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <app-user-card [user]='{id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 }'></app-user-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <app-user-card [user]='{id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 }'></app-user-card>
-        </mat-grid-tile>
 </mat-grid-list>
