@@ -24,9 +24,19 @@ export class UserService {
   getAll() {
     return this.users;
   }
+  getById(userId : string) {
+    return this.users.find(u => u.id === userId);
+  }
   delete(userId : string) {
     const id = this.users.findIndex(u => u.id === userId);
     if(id > -1) this.users.splice(id, 1);
     console.log(this.users);
+  }
+  add(user : User) {
+    this.users.push(user);
+  }
+  edit(user : User) {
+    const u = this.getById(user.id);
+    Object.assign(u, user);
   }
 }
