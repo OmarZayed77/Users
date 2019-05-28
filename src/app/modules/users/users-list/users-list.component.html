@@ -1,3 +1,9 @@
+<mat-form-field appearance="legacy">
+    <mat-label>Search</mat-label>
+    <input #searchText matInput placeholder="By first name, last name or email">
+    <mat-icon matSuffix (click)="search(searchText)">search</mat-icon>
+    <mat-icon matSuffix (click)="reset(searchText)">clear</mat-icon>
+  </mat-form-field>
 <h2 *ngIf="users.length === 0">No Users Found!</h2>
 <mat-grid-list cols="4" rowHeight="14rem" gutterSize="10">
     <mat-grid-tile *ngFor="let item of users">

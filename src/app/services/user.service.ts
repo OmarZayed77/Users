@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import User from '../model/user';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,10 @@ import User from '../model/user';
 export class UserService {
   
   users : User[];
+  userDeleted : Subject<string>;
 
   constructor() { 
+    this.userDeleted = new Subject<string>();
     this.users= [
       {id:"1", fName:"Omar", lName:"Zayed", email:"omar@gmail.com", address:"No. 7 st", city:"Maadi", state:"Cairo", gender: 0 },
       {id:"2", fName:"Ahmed", lName:"Ali", email:"ahmed@gmail.com", address:"No. 111 st", city:"Helwan", state:"Cairo", gender: 0 },
@@ -28,9 +31,9 @@ export class UserService {
     return this.users.find(u => u.id === userId);
   }
   delete(userId : string) {
-    const id = this.users.findIndex(u => u.id === userId);
-    if(id > -1) this.users.splice(id, 1);
-    console.log(this.users);
+    const index = this.users.findIndex(u => u.id === userId);
+    if(index > -1) this.users.splice(index, 1);
+    this.userDeleted.next(userId);
   }
   add(user : User) {
     this.users.push(user);
@@ -38,5 +41,10 @@ export class UserService {
   edit(user : User) {
     const u = this.getById(user.id);
     Object.assign(u, user);
+  }
+  search(searchTxt : string) {
+    return this.users.filter(u => u.fName.toLowerCase().includes(searchTxt.toLowerCase()) 
+                              || u.lName.toLowerCase().includes(searchTxt.toLowerCase()) 
+                              || u.email.toLowerCase().includes(searchTxt.toLowerCase()));
   }
 }

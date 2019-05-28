@@ -14,9 +14,21 @@ export class UsersListComponent implements OnInit {
 
   constructor(private _usersService : UserService) {
     this.usersService = _usersService;
+    this.usersService.userDeleted.subscribe(id => {
+      const index = this.users.findIndex(u => u.id === id);
+      if(index > -1) this.users.splice(index, 1);
+    });
   }
   
   ngOnInit() {
+    this.users = this.usersService.getAll();
+  }
+
+  search(searchText) {
+    if(searchText !== "") this.users = this.usersService.search(searchText.value);
+  }
+  reset(searchText) {
+    searchText.value = "";
     this.users = this.usersService.getAll();
   }
 
